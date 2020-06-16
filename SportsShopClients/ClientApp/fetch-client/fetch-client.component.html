@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="page-header">
+    <h1>Clients list</h1>
+  </div>
+</div>
+<p>
+  <a [routerLink]="['/client-add']">Create New</a>
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th> Social number(CPF/CNPJ) </th>
+      <th> Name </th>
+      <th> Classification </th>
+      <th> Telephones </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of clientList">
+      <td>{{client.socialNumber}}</td>
+      <td>{{client.name}}</td>
+      <td>{{client.classification}}</td>
+      <td>{{client.numberList}}  </td>
+      <td>
+        <a [routerLink]="['/client-edit/', client.id]">Edit</a> |
+        <a [routerLink]="" (click)="delete(client.id, client.name)">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

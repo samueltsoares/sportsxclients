@@ -1,0 +1,72 @@
+<h2></h2>
+<h4>Client</h4>
+<hr />
+<div class="row">
+  <div class="col-md-4">
+    <div class="form-group row">
+      <label class=" control-label col-md-4">Name</label>
+      <div class="col-md-8">
+        <input class="form-control" type="text" [(ngModel)]="modelData.name" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class=" control-label col-md-4">Social Number(CPF/CNPJ)</label>
+      <div class="col-md-8">
+        <input class="form-control" type="text" [(ngModel)]="modelData.socialNumber" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class=" control-label col-md-4">CEP</label>
+      <div class="col-md-8">
+        <input class="form-control" type="text" placeholder="00-000-000" [(ngModel)]="modelData.cep">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class=" control-label col-md-4">Email</label>
+      <div class="col-md-8">
+        <input class="form-control" type="text" [(ngModel)]="modelData.email" required pattern=".+\\@.+\\..+">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class=" control-label col-md-4">Classification</label>
+      <div class="col-md-8">
+        <select class="form-control" name="classification" [(ngModel)]="modelData.classification" required>
+          <option value="">-- Select Classification --</option>
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+          <option value="Preferential">Preferential</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="page-header">
+      <h2>Phone list</h2>
+    </div>
+    <p>
+      <a [routerLink]="" (click)="addNumber()">Add New</a>
+    </p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th> Telephone Number </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let phone of modelData.telephoneList">
+          <td>{{phone.number}}</td>
+          <td>
+            <a [routerLink]="" (click)="editNumber(phone.id, phone.number)">Edit</a> |
+            <a [routerLink]="" (click)="deleteNumber(phone.id, phone.number)">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-default" (click)="save()">Save</button>
+      <button class="btn" (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+</div>
